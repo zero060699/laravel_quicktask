@@ -5,6 +5,12 @@
             <h1 class="text-center">{{ trans('lable.crud') }}</h1>
         </div>
     </div>
+    @if (Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ trans('label.message') }}</p>
+                {!! Session::get('success') !!}
+        </div>
+    @endif
     <div class="col-md-12 text-right">
         <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ trans('label.add') }}</a>
     </div>
@@ -29,7 +35,9 @@
                 <td>{{ $post->detail }}</td>
                 <td>{{ $post->author }}</td>
                 <td>
-                    <form action="{{ route('posts.destroy', $post->id) }}">
+                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
                         <a href="#" class="btn btn-info">{{ trans('lable.comment') }}</a>
                         <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning">{{ trans('lable.edit') }}</a>
                         <button type="submit" class="btn btn-danger">{{ trans('label.delete') }}</button>
