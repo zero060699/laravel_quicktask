@@ -1,6 +1,6 @@
-@extends('layout')
+@extends('layouts.app')
 @section('content')
-    <div class="col-md-8 offset-md-4">
+    <div class="col-md-8 offset-md-5">
         <div class="row">
             <form action="{{ route('posts.update', $post->id) }}" method="POST">
                 @csrf
