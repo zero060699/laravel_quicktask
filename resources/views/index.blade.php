@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -11,18 +11,6 @@
                 {!! Session::get('success') !!}
         </div>
     @endif
-    <div class="container">
-        <div class="row">
-            <div class="menu">
-                <ul class="list-menu">
-                    <li class="li-menu">
-                        <a href="{{ route('change_language', ['language' => 'en']) }}">{{ trans('label.en') }}</a>
-                    </li>
-                    <li class="li-menu">
-                        <a href="{{ route('change_language', ['language' => 'vi']) }}">{{ trans('label.vi') }}</a>
-                    </li>
-                </ul>
-            </div>
     <div class="col-md-12 text-right">
         <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ trans('label.add') }}</a>
     </div>
@@ -50,7 +38,6 @@
                     <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <a href="#" class="btn btn-info">{{ trans('label.comment') }}</a>
                         <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning">{{ trans('label.edit') }}</a>
                         <button type="submit" class="btn btn-danger">{{ trans('label.delete') }}</button>
                     </form>
