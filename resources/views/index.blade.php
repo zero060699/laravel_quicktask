@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <h1 class="text-center">{{ trans('lable.crud') }}</h1>
+            <h1 class="text-center">{{ trans('label.crud') }}</h1>
         </div>
     </div>
     @if (Session::get('success'))
@@ -11,6 +11,18 @@
                 {!! Session::get('success') !!}
         </div>
     @endif
+    <div class="container">
+        <div class="row">
+            <div class="menu">
+                <ul class="list-menu">
+                    <li class="li-menu">
+                        <a href="{{ route('change_language', ['language' => 'en']) }}">{{ trans('label.en') }}</a>
+                    </li>
+                    <li class="li-menu">
+                        <a href="{{ route('change_language', ['language' => 'vi']) }}">{{ trans('label.vi') }}</a>
+                    </li>
+                </ul>
+            </div>
     <div class="col-md-12 text-right">
         <a href="{{ route('posts.create') }}" class="btn btn-primary">{{ trans('label.add') }}</a>
     </div>
@@ -18,10 +30,10 @@
         <thead>
             <tr class="text-center">
                 <th>{{ trans('label.no') }}</th>
-                <th>{{ trans('lable.name') }}</th>
-                <th>{{ trans('lable.detail') }}</th>
-                <th>{{ trans('lable.author') }}</th>
-                <th>{{ trans('lable.action') }}</th>
+                <th>{{ trans('label.name') }}</th>
+                <th>{{ trans('label.detail') }}</th>
+                <th>{{ trans('label.author') }}</th>
+                <th>{{ trans('label.action') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -38,8 +50,8 @@
                     <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <a href="#" class="btn btn-info">{{ trans('lable.comment') }}</a>
-                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning">{{ trans('lable.edit') }}</a>
+                        <a href="#" class="btn btn-info">{{ trans('label.comment') }}</a>
+                        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning">{{ trans('label.edit') }}</a>
                         <button type="submit" class="btn btn-danger">{{ trans('label.delete') }}</button>
                     </form>
                 </td>

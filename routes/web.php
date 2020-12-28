@@ -14,11 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'language'], function() {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('change-language/{language}', 'PostController@changeLanguage')->name('change-language');
+    Route::resource('posts', 'PostController');
+
+    Auth::routes();
 });
-Route::resource('posts', 'PostController');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -12,21 +12,21 @@
                 @csrf
                 <div class="form-group">
                     <label for="">{{ trans('label.name') }}</label>
-                    <input class="form-control" type="text" name="name" placeholder="{{ trans('name') }}"/>
+                    <input class="form-control" type="text" name="name" placeholder="{{ trans('label.name') }}"/>
                     @error('name')
                         <div>{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="">{{ trans('labeldetail') }}</label>
-                    <textarea class="form-control" name="detail" placeholder="{{ trans('detail') }}"></textarea>
+                    <label for="">{{ trans('label.detail') }}</label>
+                    <textarea class="form-control" name="detail" placeholder="{{ trans('label.detail') }}"></textarea>
                     @error('detail')
                         <div>{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="">{{ trans('label.author') }}</label>
-                    <input class="form-control" type="text" name="author" placeholder="{{ trans('author') }}"/>
+                    <input class="form-control" type="text" name="author" placeholder="{{ trans('label.author') }}"/>
                     @error('author')
                         <div>{{ $message }}</div>
                     @enderror

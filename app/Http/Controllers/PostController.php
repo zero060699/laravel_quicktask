@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
+use Illuminate\Http\Request;
 use App\Models\Post;
-
+use Session;
 
 class PostController extends Controller
 {
@@ -90,5 +91,16 @@ class PostController extends Controller
         Post::destroy($id);
 
         return redirect()->route('posts.index');
+    }
+
+    public function changeLanguage(Request $request)
+    {
+       $lang = $request->language;
+       if ($lang != 'en' && $lang != 'vi') {
+           $lang = config('app.locale');
+       }
+       Session::put('language', $lang);
+
+       return redirect()->back();
     }
 }
