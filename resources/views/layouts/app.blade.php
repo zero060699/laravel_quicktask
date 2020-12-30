@@ -32,7 +32,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @guest
+                            @else
+                                <li>
+                                    <a class="nav-link" href="{{ route('posts.index') }}">{{ trans('label.crud') }}</a>
+                                </li>
+                        @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -61,10 +66,22 @@
                                 </div>
                             </li>
                         @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="menu">
+                                    <ul class="list-menu">
+                                        <li class="li-menu">
+                                            <a href="{{ route('change_language', ['language' => 'en']) }}">{{ trans('label.en') }}</a>
+                                        </li>
+                                        <li class="li-menu">
+                                            <a href="{{ route('change_language', ['language' => 'vi']) }}">{{ trans('label.vi') }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
 
         <main class="py-4">
             @yield('content')

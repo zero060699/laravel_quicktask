@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Auth;
 use Session;
 
 class PostController extends Controller
@@ -42,12 +43,13 @@ class PostController extends Controller
             'name' => $request->name,
             'detail' => $request->detail,
             'author' => $request->author,
+            'user_id' => Auth::id(),
         ]);
         if ($posts) {
-            return redirect()->route('posts.index')->with('success', trans('successfully'));
+            return redirect()->route('posts.index')->with('success', trans('label.successfully'));
         }
 
-            return redirect()->route('posts.index')->with('fail', trans('error'));
+        return redirect()->route('posts.index')->with('fail', trans('label.error'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -74,10 +76,10 @@ class PostController extends Controller
         $posts = Post::findOrFail($id);
         $posts->update($request->all());
         if ($posts) {
-            return redirect()->route('posts.index')->with('success', trans('success'));
+            return redirect()->route('posts.index')->with('success', trans('label.success'));
         }
 
-            return redirect()->route('posts.edit', $id)->with('fail', trans('error'));
+        return redirect()->route('posts.edit', $id)->with('fail', trans('label.error'));
     }
 
     /**
